@@ -1,4 +1,4 @@
-# electron-vite-vue
+# Audio-scheduler
 
 🥳 Really simple `Electron` + `Vue` + `Vite` boilerplate.
 
