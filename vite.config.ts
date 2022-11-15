@@ -12,6 +12,7 @@ rmSync('dist-electron', { recursive: true, force: true })
 export default defineConfig({
   plugins: [
     vue(),
+    require('tailwindcss'), require('autoprefixer'),
     electron({
       include: ['electron'],
       transformOptions: {

@@ -17,6 +17,7 @@ process.env.PUBLIC = app.isPackaged
 import { app, BrowserWindow, dialog, IpcMain, shell, ipcMain } from "electron";
 import { release } from "os";
 import { join } from "path";
+// const main = require('electron-process').main;
 const Store = require('electron-store');
 const store = new Store();
 // Disable GPU Acceleration for Windows 7
@@ -87,6 +88,12 @@ async function createWindow() {
       console.error(error);
     }
   });
+ 
+  const backgroundURL = 'file://' + __dirname + '/background.html';
+  const backgroundProcessHandler = main.createBackgroundProcess(backgroundURL, true);
+  // mainWindow = new BrowserWindow({width: 1280, height: 600});
+  backgroundProcessHandler.addWindow(win);
+  // mainWindow.loadURL('file://' + __dirname + '/foreground.html');
 }
 
 app.whenReady().then(createWindow);
